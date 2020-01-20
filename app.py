@@ -93,7 +93,10 @@ def scrape(link, _creation_date = ''):
             author = soup.find(id='article-author').string
 
         # TEXT_BODY
-        subtitle = soup.find(id='article-subtitle').get_text()
+        if soup.find(id='article-subtitle'):
+            subtitle = soup.find(id='article-subtitle').get_text()
+        else: 
+            subtitle = ''
         body = soup.find(id='article-content').get_text()
         text_body = subtitle + '\n' + body
 
